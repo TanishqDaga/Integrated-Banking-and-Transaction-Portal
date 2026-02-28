@@ -1,5 +1,6 @@
 package com.Bank.BankingApp.contoller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
@@ -59,6 +60,12 @@ public class AccountController {
 		AccountDto accountDto=accountService.withdraw(id,amount);
 		return ResponseEntity.ok(accountDto);
 		
+	}
+	//Get All Accounts REST API
+	@GetMapping("/getAllAccounts")
+	public ResponseEntity<List<AccountDto>> getAllAccounts(){
+		List<AccountDto> accounts=accountService.getAllAccounts();
+		return ResponseEntity.ok(accounts);
 	}
 	
 }
