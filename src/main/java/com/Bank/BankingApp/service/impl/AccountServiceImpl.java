@@ -11,6 +11,8 @@ import com.Bank.BankingApp.mapper.AccountMapper;
 import com.Bank.BankingApp.repository.AccountRepository;
 import com.Bank.BankingApp.service.AccountService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class AccountServiceImpl implements AccountService {
 	
@@ -77,6 +79,37 @@ public class AccountServiceImpl implements AccountService {
 				.findById(id)
 				.orElseThrow(() -> new RuntimeException("Account does not exists"));
 		accountRepository.deleteById(id);
+		
+	}
+	
+	@Transactional 
+	@Override
+	public List<AccountDto> transferFund(Long fromId, Long toId, double amount) {
+		Account senderAccount= accountRepository
+				.findById(fromId)
+				.orElseThrow(() -> new RuntimeException("Sender Account does not exists"));
+		Account receiverAccount= accountRepository
+				.findById(toId)
+				.orElseThrow(() -> new RuntimeException("Receiver Account does not exists"));
+		if (senderAccount.getBalance() < amount) {
+	        throw new RuntimeException("Insufficient balance");
+	    }
+
+		double senderTotal =senderAccount.getBalance()-amount;
+		senderAccount.setBalance(senderTotal);
+		Account savedSenderAccount=accountRepository.save(senderAccount);
+		
+		double total =receiverAccount.getBalance()+amount;
+		receiverAccount.setBalance(total);
+		Account savedReceiverAccount=accountRepository.save(receiverAccount);
+		
+		AccountDto senderDto = AccountMapper.mapToAccountDto(savedSenderAccount);
+	    AccountDto receiverDto = AccountMapper.mapToAccountDto(savedReceiverAccount);
+
+	    return List.of(senderDto, receiverDto);
+		
+		
+		
 		
 	}
 

@@ -6,8 +6,8 @@ import com.Bank.BankingApp.entity.Account;
 public class AccountMapper {
 	public static Account mapToAccount(AccountDto accountDto) {
 		Account account =new Account();
-		account.setAccountHolderName(accountDto.getAccountHolderName());
-		account.setBalance(accountDto.getBalance());
+		account.setAccountHolderName(accountDto.accountHolderName());
+		account.setBalance(accountDto.balance());
 		return account;
 	}
 	public static AccountDto mapToAccountDto(Account account) {

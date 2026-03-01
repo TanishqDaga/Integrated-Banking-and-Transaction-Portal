@@ -77,4 +77,13 @@ public class AccountController {
 		return ResponseEntity.ok("Account deleted Successfully");
 	}
 	
+	// Transfer Fund REST API
+	@PostMapping("/transferFund/{fromId}/{toId}")
+	public ResponseEntity<List<AccountDto>> transferFund(@PathVariable Long fromId,
+																@PathVariable Long toId,@RequestBody Map<String,Double> request){
+		double amount=request.get("amount");
+		List<AccountDto> accounts=accountService.transferFund(fromId,toId,amount);
+		return ResponseEntity.ok(accounts);
+	}
+	
 }
