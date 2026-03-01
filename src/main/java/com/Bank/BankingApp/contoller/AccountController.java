@@ -45,7 +45,7 @@ public class AccountController {
 		
 	}
 	//Deposit REST API
-	@PutMapping("/deposit/{id}")
+	@PostMapping("/deposit/{id}")
 	public ResponseEntity<AccountDto> deposit(@PathVariable long id,@RequestBody Map<String,Double> request){
 		
 		double amount=request.get("amount");
@@ -54,7 +54,7 @@ public class AccountController {
 		
 	}
 	//Withdraw REST API
-	@PutMapping("/withdraw/{id}")
+	@PostMapping("/withdraw/{id}")
 	public ResponseEntity<AccountDto> withdraw(@PathVariable long id,@RequestBody Map<String,Double> request){
 		
 		double amount=request.get("amount");
