@@ -1,4 +1,4 @@
-package com.Bank.BankingApp.contoller;
+package com.Bank.BankingApp.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -32,9 +32,9 @@ public class AccountController {
 	}
 	
 	//Add account REST API
-	@PostMapping("/addAccount")
-	public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
-		return new ResponseEntity<>(accountService.createAccount(accountDto),HttpStatus.CREATED);
+	@PostMapping("/addAccount/{userId}")
+	public ResponseEntity<AccountDto> addAccount(@PathVariable Long userId,@RequestBody AccountDto accountDto){
+		return new ResponseEntity<>(accountService.createAccount(userId,accountDto),HttpStatus.CREATED);
 	}
 	
 	//Get account REST API

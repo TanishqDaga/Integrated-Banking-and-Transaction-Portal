@@ -3,21 +3,26 @@ package com.Bank.BankingApp.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.Bank.BankingApp.Dto.AccountDto;
 import com.Bank.BankingApp.entity.Account;
+import com.Bank.BankingApp.entity.User;
 import com.Bank.BankingApp.exception.AccountException;
 import com.Bank.BankingApp.mapper.AccountMapper;
 import com.Bank.BankingApp.repository.AccountRepository;
+import com.Bank.BankingApp.repository.UserRepository;
 import com.Bank.BankingApp.service.AccountService;
 
 import jakarta.transaction.Transactional;
 
 @Service
 public class AccountServiceImpl implements AccountService {
-	
+	@Autowired
 	private AccountRepository accountRepository;
+	@Autowired
+	private UserRepository userRepository;
 	
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		super();
@@ -25,11 +30,17 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public AccountDto createAccount(AccountDto accountDto) {
+	public AccountDto createAccount(Long userId,AccountDto accountDto) {
 		
-		Account account=AccountMapper.mapToAccount(accountDto);
-		Account savedAccount=accountRepository.save(account);
-		return AccountMapper.mapToAccountDto(savedAccount);
+		User user = userRepository.findById(userId).get();
+
+	    Account account = AccountMapper.mapToAccount(accountDto);
+
+	    account.setUser(user);
+
+	    Account savedAccount = accountRepository.save(account);
+
+	    return AccountMapper.mapToAccountDto(savedAccount);
 	}
 	
 	@Override

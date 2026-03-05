@@ -4,7 +4,7 @@ import com.Bank.BankingApp.Dto.AccountDto;
 import java.util.List;
 
 public interface AccountService {
-	AccountDto createAccount(AccountDto accountDto);
+	AccountDto createAccount(Long userId,AccountDto accountDto);
 	
 	AccountDto getAccountById(Long id);
 	
