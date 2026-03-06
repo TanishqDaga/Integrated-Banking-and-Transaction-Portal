@@ -27,6 +27,19 @@ public class Account {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name = "bank_id")
+	private Bank bank;
+	
+	
+	public Bank getBank() {
+	    return bank;
+	}
+
+	public void setBank(Bank bank) {
+	    this.bank = bank;
+	}
+	
 	
 	
 	public User getUser() {
