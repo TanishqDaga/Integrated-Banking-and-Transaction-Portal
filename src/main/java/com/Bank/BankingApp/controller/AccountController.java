@@ -19,7 +19,7 @@ import com.Bank.BankingApp.repository.AccountRepository;
 import com.Bank.BankingApp.service.AccountService;
 
 @RestController
-@RequestMapping("/api/accounts")
+@RequestMapping("/accounts")
 public class AccountController {
 
     private final AccountRepository accountRepository;
@@ -32,9 +32,9 @@ public class AccountController {
 	}
 	
 	//Add account REST API
-	@PostMapping("/addAccount/{userId}")
-	public ResponseEntity<AccountDto> addAccount(@PathVariable Long userId,@RequestBody AccountDto accountDto){
-		return new ResponseEntity<>(accountService.createAccount(userId,accountDto),HttpStatus.CREATED);
+	@PostMapping("/addAccount")
+	public ResponseEntity<AccountDto> addAccount(@RequestBody AccountDto accountDto){
+		return new ResponseEntity<>(accountService.createAccount(accountDto),HttpStatus.CREATED);
 	}
 	
 	//Get account REST API
@@ -67,6 +67,12 @@ public class AccountController {
 	public ResponseEntity<List<AccountDto>> getAllAccounts(){
 		List<AccountDto> accounts=accountService.getAllAccounts();
 		return ResponseEntity.ok(accounts);
+	}
+	
+	//Get MY Accounts REST API
+	@GetMapping("/my-accounts")
+	public List<AccountDto> getMyAccounts(){
+	    return accountService.getAccountsOfLoggedInUser();
 	}
 	
 	//Delete Account REST API

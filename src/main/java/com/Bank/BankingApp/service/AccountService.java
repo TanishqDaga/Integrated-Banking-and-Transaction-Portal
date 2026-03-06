@@ -4,7 +4,7 @@ import com.Bank.BankingApp.Dto.AccountDto;
 import java.util.List;
 
 public interface AccountService {
-	AccountDto createAccount(Long userId,AccountDto accountDto);
+	AccountDto createAccount(AccountDto accountDto);
 	
 	AccountDto getAccountById(Long id);
 	
@@ -18,4 +18,6 @@ public interface AccountService {
 	void deleteAccount(Long id);
 	
 	List<AccountDto> transferFund(Long fromId,Long toId,double amount);
+	
+	List<AccountDto> getAccountsOfLoggedInUser();
 }

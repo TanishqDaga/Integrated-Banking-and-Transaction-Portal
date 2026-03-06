@@ -1,7 +1,7 @@
 package com.Bank.BankingApp.entity;
 
 import jakarta.persistence.*;
-import java.util.List;
+
 
 @Entity
 @Table(name = "banks")
@@ -16,8 +16,7 @@ public class Bank {
 
     private String branch;
 
-    @OneToMany(mappedBy = "bank")
-    private List<Account> accounts;
+    
 
     public Bank() {}
 
@@ -45,11 +44,5 @@ public class Bank {
         this.branch = branch;
     }
 
-    public List<Account> getAccounts() {
-        return accounts;
-    }
-
-    public void setAccounts(List<Account> accounts) {
-        this.accounts = accounts;
-    }
+    
 }

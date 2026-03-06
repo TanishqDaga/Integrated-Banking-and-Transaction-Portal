@@ -1,7 +1,11 @@
 package com.Bank.BankingApp.service.impl;
 
 import java.util.List;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import java.util.stream.Collectors;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,18 +34,23 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public AccountDto createAccount(Long userId,AccountDto accountDto) {
-		
-		User user = userRepository.findById(userId).get();
+	public AccountDto createAccount(AccountDto accountDto){
 
-	    Account account = AccountMapper.mapToAccount(accountDto);
+		Authentication auth =
+		SecurityContextHolder.getContext().getAuthentication();
 
-	    account.setUser(user);
+		String username = auth.getName();
 
-	    Account savedAccount = accountRepository.save(account);
+		User user = userRepository.findByUsername(username);
 
-	    return AccountMapper.mapToAccountDto(savedAccount);
-	}
+		Account account = AccountMapper.mapToAccount(accountDto);
+
+		account.setUser(user);
+
+		Account savedAccount = accountRepository.save(account);
+
+		return AccountMapper.mapToAccountDto(savedAccount);
+		}
 	
 	@Override
 	public AccountDto getAccountById(Long id) {
@@ -123,6 +132,23 @@ public class AccountServiceImpl implements AccountService {
 		
 		
 		
+	}
+	@Override
+	public List<AccountDto> getAccountsOfLoggedInUser(){
+
+	    Authentication auth =
+	            SecurityContextHolder.getContext().getAuthentication();
+
+	    String username = auth.getName();
+
+	    User user = userRepository.findByUsername(username);
+
+	    List<Account> accounts =
+	    		accountRepository.findByUserUserId(user.getuserId());
+
+	    return accounts.stream()
+	            .map(AccountMapper::mapToAccountDto)
+	            .toList();
 	}
 
 	
