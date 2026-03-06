@@ -20,4 +20,5 @@ public interface AccountService {
 	List<AccountDto> transferFund(Long fromId,Long toId,double amount);
 	
 	List<AccountDto> getAccountsOfLoggedInUser();
+	void transferFunds(Long sourceAccountId,Long targetAccount,double amount);
 }

@@ -1,5 +1,6 @@
 package com.Bank.BankingApp.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.security.core.Authentication;
@@ -8,14 +9,17 @@ import java.util.stream.Collectors;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import com.Bank.BankingApp.Dto.AccountDto;
 import com.Bank.BankingApp.entity.Account;
+import com.Bank.BankingApp.entity.Transaction;
 import com.Bank.BankingApp.entity.User;
 import com.Bank.BankingApp.exception.AccountException;
 import com.Bank.BankingApp.mapper.AccountMapper;
 import com.Bank.BankingApp.repository.AccountRepository;
+import com.Bank.BankingApp.repository.TransactionRepository;
 import com.Bank.BankingApp.repository.UserRepository;
 import com.Bank.BankingApp.service.AccountService;
 
@@ -27,6 +31,8 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 	@Autowired
 	private UserRepository userRepository;
+	@Autowired
+	private TransactionRepository transactionRepository;
 	
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		super();
@@ -149,6 +155,53 @@ public class AccountServiceImpl implements AccountService {
 	    return accounts.stream()
 	            .map(AccountMapper::mapToAccountDto)
 	            .toList();
+	}
+	
+	@Transactional
+	public void transferFunds(Long sourceAccountId,
+	                          Long targetAccountId,
+	                          double amount) {
+
+	    Authentication auth =
+	            SecurityContextHolder.getContext().getAuthentication();
+
+	    String username = auth.getName();
+
+	    User user = userRepository.findByUsername(username);
+
+	    Account sourceAccount =
+	            accountRepository.findById(sourceAccountId)
+	                    .orElseThrow(() -> new RuntimeException("Source account not found"));
+
+	    Account targetAccount =
+	            accountRepository.findById(targetAccountId)
+	                    .orElseThrow(() -> new RuntimeException("Target account not found"));
+
+	    // SECURITY CHECK
+	    if(!sourceAccount.getUser().getuserId().equals(user.getuserId())){
+	        throw new RuntimeException("You cannot transfer from another user's account");
+	    }
+
+	    if(sourceAccount.getBalance() < amount){
+	        throw new RuntimeException("Insufficient balance");
+	    }
+
+	    // update balances
+	    sourceAccount.setBalance(sourceAccount.getBalance() - amount);
+	    targetAccount.setBalance(targetAccount.getBalance() + amount);
+
+	    accountRepository.save(sourceAccount);
+	    accountRepository.save(targetAccount);
+
+	    // save transaction
+	    Transaction transaction = new Transaction();
+	    transaction.setAmount(amount);
+	    transaction.setTransactionType("TRANSFER");
+	    transaction.setTransactionTime(LocalDateTime.now());
+	    transaction.setSourceAccount(sourceAccount);
+	    transaction.setTargetAccount(targetAccount);
+
+	    transactionRepository.save(transaction);
 	}
 
 	

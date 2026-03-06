@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.Bank.BankingApp.Dto.AccountDto;
+import com.Bank.BankingApp.Dto.TransferRequest;
 import com.Bank.BankingApp.repository.AccountRepository;
 import com.Bank.BankingApp.service.AccountService;
 
@@ -90,6 +91,16 @@ public class AccountController {
 		double amount=request.get("amount");
 		List<AccountDto> accounts=accountService.transferFund(fromId,toId,amount);
 		return ResponseEntity.ok(accounts);
+	}
+	@PostMapping("/transfer")
+	public String transferFunds(@RequestBody TransferRequest request){
+
+	    accountService.transferFunds(
+	            request.getSourceAccountId(),
+	            request.getTargetAccountId(),
+	            request.getAmount());
+
+	    return "Transfer successful";
 	}
 	
 }
