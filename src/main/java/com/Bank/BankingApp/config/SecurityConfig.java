@@ -22,6 +22,7 @@ public PasswordEncoder passwordEncoder(){
 					.csrf(csrf -> csrf.disable())
 					.authorizeHttpRequests(auth -> auth
 					.requestMatchers("/auth/**").permitAll()
+					.requestMatchers("/admin/**").hasRole("ADMIN")
 					.anyRequest().authenticated()
 					)
 					.httpBasic(withDefaults());
