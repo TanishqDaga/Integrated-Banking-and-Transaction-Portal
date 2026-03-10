@@ -21,7 +21,7 @@ public class AuthController {
     public User register(@RequestBody User user){
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        //user.setRole("CUSTOMER");
+        user.setRole("CUSTOMER");
 
         return userRepository.save(user);
     }
