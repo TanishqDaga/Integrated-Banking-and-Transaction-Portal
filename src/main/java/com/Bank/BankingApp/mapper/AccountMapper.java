@@ -10,12 +10,13 @@ public class AccountMapper {
 		account.setBalance(accountDto.balance());
 		return account;
 	}
-	public static AccountDto mapToAccountDto(Account account) {
-		AccountDto accountDto =new AccountDto(
-				account.getId(),
-				account.getAccountHolderName(),
-				account.getBalance()
-		);
-		return accountDto;
+	public static AccountDto mapToAccountDto(Account account){
+
+	    return new AccountDto(
+	            account.getId(),
+	            account.getAccountHolderName(),
+	            account.getBalance(),
+	            account.getBank().getBankId()
+	    );
 	}
 }

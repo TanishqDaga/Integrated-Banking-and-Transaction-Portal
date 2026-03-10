@@ -7,6 +7,7 @@ import java.util.*;
 
 public interface AccountRepository extends JpaRepository<Account,Long> {
 	List<Account> findByUserUserId(Long userId);
+	List<Account> findByStatus(String status);
 		
 
 }

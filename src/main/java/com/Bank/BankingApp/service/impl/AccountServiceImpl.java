@@ -14,11 +14,13 @@ import org.springframework.stereotype.Service;
 
 import com.Bank.BankingApp.Dto.AccountDto;
 import com.Bank.BankingApp.entity.Account;
+import com.Bank.BankingApp.entity.Bank;
 import com.Bank.BankingApp.entity.Transaction;
 import com.Bank.BankingApp.entity.User;
 import com.Bank.BankingApp.exception.AccountException;
 import com.Bank.BankingApp.mapper.AccountMapper;
 import com.Bank.BankingApp.repository.AccountRepository;
+import com.Bank.BankingApp.repository.BankRepository;
 import com.Bank.BankingApp.repository.TransactionRepository;
 import com.Bank.BankingApp.repository.UserRepository;
 import com.Bank.BankingApp.service.AccountService;
@@ -33,6 +35,9 @@ public class AccountServiceImpl implements AccountService {
 	private UserRepository userRepository;
 	@Autowired
 	private TransactionRepository transactionRepository;
+	@Autowired
+	private BankRepository bankRepository;
+	
 	
 	public AccountServiceImpl(AccountRepository accountRepository) {
 		super();
@@ -42,21 +47,30 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public AccountDto createAccount(AccountDto accountDto){
 
-		Authentication auth =
-		SecurityContextHolder.getContext().getAuthentication();
+	    Authentication auth =
+	            SecurityContextHolder.getContext().getAuthentication();
 
-		String username = auth.getName();
+	    String username = auth.getName();
 
-		User user = userRepository.findByUsername(username);
+	    User user = userRepository.findByUsername(username);
 
-		Account account = AccountMapper.mapToAccount(accountDto);
+	    Account account = AccountMapper.mapToAccount(accountDto);
 
-		account.setUser(user);
+	    account.setUser(user);
 
-		Account savedAccount = accountRepository.save(account);
+	    // attach bank
+	    Bank bank = bankRepository.findById(accountDto.bankId())
+	            .orElseThrow(() -> new RuntimeException("Bank not found"));
 
-		return AccountMapper.mapToAccountDto(savedAccount);
-		}
+	    account.setBank(bank);
+
+	    // account needs admin approval
+	    account.setStatus("PENDING");
+
+	    Account savedAccount = accountRepository.save(account);
+
+	    return AccountMapper.mapToAccountDto(savedAccount);
+	}
 	
 	@Override
 	public AccountDto getAccountById(Long id) {

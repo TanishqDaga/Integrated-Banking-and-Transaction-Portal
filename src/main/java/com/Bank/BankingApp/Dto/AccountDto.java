@@ -32,6 +32,6 @@ package com.Bank.BankingApp.Dto;
 //	
 //	
 //}
-public record AccountDto(Long id,String accountHolderName,double balance) {
+public record AccountDto(Long id,String accountHolderName,double balance,Long bankId) {
 	
 }

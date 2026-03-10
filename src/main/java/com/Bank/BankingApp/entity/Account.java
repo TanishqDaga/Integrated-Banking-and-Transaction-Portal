@@ -31,7 +31,19 @@ public class Account {
 	@JoinColumn(name = "bank_id")
 	private Bank bank;
 	
+	private String status;  // PENDING, APPROVED
 	
+	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public Bank getBank() {
 	    return bank;
 	}
