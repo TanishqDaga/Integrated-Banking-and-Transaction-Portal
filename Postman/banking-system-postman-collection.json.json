@@ -1,0 +1,491 @@
+{
+  "info": {
+    "_postman_id": "6c288924-4b93-4f03-9866-b6f70c095953",
+    "name": "Banking System API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52144838",
+    "_collection_link": "https://go.postman.co/collection/52144838-6c288924-4b93-4f03-9866-b6f70c095953?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"rahul\",\r\n  \"password\": \"rahul123\",\r\n  \"role\": \"CUSTOMER\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/auth/register",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "auth",
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login Test",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Accounts",
+      "item": [
+        {
+          "name": "Account Request by User",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "rahul",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "rahul123",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"accountHolderName\": \"Rahul\",\r\n  \"balance\": 5000,\r\n  \"bankId\": 1\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/accounts/addAccount",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "accounts",
+                "addAccount"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Transactions",
+      "item": [
+        {
+          "name": "Transfer Money",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "sneha123",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "sneha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"accountHolderName\": \"Rahul\",\r\n  \"balance\": 5000,\r\n  \"bankId\": 1\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/accounts/transfer",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "accounts",
+                "transfer"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get your Transaction log",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "sneha123",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "sneha",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"accountHolderName\": \"Rahul\",\r\n  \"balance\": 5000,\r\n  \"bankId\": 1\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/transactions/my",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "transactions",
+                "my"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Banks",
+      "item": [
+        {
+          "name": "Create Bank",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bankName\": \"HDFC Bank\",\r\n  \"branch\": \"Jaipur\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/banks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "banks"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get all Banks",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bankName\": \"HDFC Bank\",\r\n  \"branch\": \"Jaipur\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/banks",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "banks"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Admin APIs",
+      "item": [
+        {
+          "name": "get all user details",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bankName\": \"HDFC Bank\",\r\n  \"branch\": \"Jaipur\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/users",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "get all transaction details",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bankName\": \"HDFC Bank\",\r\n  \"branch\": \"Jaipur\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/transactions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "transactions"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "check all account requests by users",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"bankName\": \"HDFC Bank\",\r\n  \"branch\": \"Jaipur\"\r\n}"
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/account-requests",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "account-requests"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove User",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"hacker\",\r\n  \"password\": \"777\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/admin/user/17",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "user",
+                "17"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Approve Account request",
+          "request": {
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "password",
+                  "value": "0909",
+                  "type": "string"
+                },
+                {
+                  "key": "username",
+                  "value": "Tanishq",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/admin/approve-account/3",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "admin",
+                "approve-account",
+                "3"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
