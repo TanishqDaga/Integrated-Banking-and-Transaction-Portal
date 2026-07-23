@@ -18,7 +18,7 @@ export default function TransactionTable({ transactions = [], showAccount = fals
 
   return (
     <div className="table-wrap">
-      <table className="nimbus-table">
+      <table className="Integrated-table">
         <thead>
           <tr>
             <th>Date</th>

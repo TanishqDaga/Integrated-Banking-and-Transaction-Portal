@@ -3,16 +3,16 @@ import './Loader.css';
 
 export default function Loader({ size = 'md', label = 'Loading…', fullPage = false }) {
   const spinner = (
-    <div className={`nimbus-loader nimbus-loader-${size}`} role="status" aria-label={label}>
-      <span className="nimbus-loader-ring" />
+    <div className={`Integrated-loader Integrated-loader-${size}`} role="status" aria-label={label}>
+      <span className="Integrated-loader-ring" />
     </div>
   );
 
   if (fullPage) {
     return (
-      <div className="nimbus-loader-fullpage fade-in">
+      <div className="Integrated-loader-fullpage fade-in">
         {spinner}
-        <p className="nimbus-loader-label">{label}</p>
+        <p className="Integrated-loader-label">{label}</p>
       </div>
     );
   }

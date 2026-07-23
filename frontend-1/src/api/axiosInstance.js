@@ -15,7 +15,7 @@ function buildBasicAuth(username, password) {
 // Attach HTTP Basic credentials (if present) to every request
 api.interceptors.request.use(
   (config) => {
-    const raw = localStorage.getItem('nimbus_auth');
+    const raw = localStorage.getItem('Integrated_auth');
     if (raw) {
       try {
         const { username, password } = JSON.parse(raw);
@@ -41,7 +41,7 @@ api.interceptors.response.use(
       const status = error.response.status;
       if (status === 401) {
         error.friendlyMessage = 'Your session has expired. Please log in again.';
-        localStorage.removeItem('nimbus_auth');
+        localStorage.removeItem('Integrated_auth');
         if (window.location.pathname !== '/login') {
           window.location.href = '/login';
         }

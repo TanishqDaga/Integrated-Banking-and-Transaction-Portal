@@ -1,4 +1,4 @@
-.nimbus-modal-overlay {
+.Integrated-modal-overlay {
   position: fixed;
   inset: 0;
   background: rgba(11, 18, 32, 0.55);
@@ -10,7 +10,7 @@
   padding: 16px;
 }
 
-.nimbus-modal {
+.Integrated-modal {
   background: var(--color-card);
   border-radius: var(--radius-lg);
   width: 100%;
@@ -19,11 +19,11 @@
   overflow: hidden;
 }
 
-.nimbus-modal-sm { max-width: 360px; }
-.nimbus-modal-md { max-width: 480px; }
-.nimbus-modal-lg { max-width: 680px; }
+.Integrated-modal-sm { max-width: 360px; }
+.Integrated-modal-md { max-width: 480px; }
+.Integrated-modal-lg { max-width: 680px; }
 
-.nimbus-modal-header {
+.Integrated-modal-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -31,12 +31,12 @@
   border-bottom: 1px solid var(--color-border);
 }
 
-.nimbus-modal-header h3 {
+.Integrated-modal-header h3 {
   font-size: 1.1rem;
   font-weight: 700;
 }
 
-.nimbus-modal-close {
+.Integrated-modal-close {
   background: none;
   border: none;
   font-size: 1.4rem;
@@ -46,15 +46,15 @@
   border-radius: 50%;
   transition: background 0.2s ease;
 }
-.nimbus-modal-close:hover {
+.Integrated-modal-close:hover {
   background: var(--color-bg);
 }
 
-.nimbus-modal-body {
+.Integrated-modal-body {
   padding: 24px;
 }
 
-.nimbus-modal-footer {
+.Integrated-modal-footer {
   display: flex;
   justify-content: flex-end;
   gap: 12px;

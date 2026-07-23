@@ -66,10 +66,10 @@ export default function Register() {
         <div className="auth-visual-content">
           <div className="auth-logo">
             <span className="navbar-logo-mark">N</span>
-            <span>Nimbus Bank</span>
+            <span>Integrated Bank</span>
           </div>
           <h1>Open an account in minutes, not days.</h1>
-          <p>Join thousands of customers who manage their money smarter with Nimbus Bank.</p>
+          <p>Join thousands of customers who manage their money smarter with Integrated Bank.</p>
         </div>
         <div className="auth-orb auth-orb-1" />
         <div className="auth-orb auth-orb-2" />

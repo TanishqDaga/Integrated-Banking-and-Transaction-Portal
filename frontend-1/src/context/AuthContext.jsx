@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useCallback, useMemo } from
 import { loginRequest, probeRole, registerRequest } from '../services/authService';
 
 const AuthContext = createContext(null);
-const STORAGE_KEY = 'nimbus_auth';
+const STORAGE_KEY = 'Integrated_auth';
 
 function readStoredAuth() {
   try {

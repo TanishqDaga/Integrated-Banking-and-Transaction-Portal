@@ -67,7 +67,7 @@ export default function AdminAccounts() {
       ) : (
         <>
           <div className="table-wrap">
-            <table className="nimbus-table">
+            <table className="Integrated-table">
               <thead>
                 <tr>
                   <th>Account Number</th>

@@ -43,7 +43,7 @@ export default function PendingRequests() {
         <EmptyState icon="⏳" title="All caught up" message="There are no pending account requests right now." />
       ) : (
         <div className="table-wrap">
-          <table className="nimbus-table">
+          <table className="Integrated-table">
             <thead>
               <tr>
                 <th>Account Number</th>

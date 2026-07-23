@@ -83,13 +83,13 @@
   background: var(--color-card);
 }
 
-table.nimbus-table {
+table.Integrated-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 640px;
 }
 
-table.nimbus-table thead th {
+table.Integrated-table thead th {
   text-align: left;
   font-size: 0.74rem;
   text-transform: uppercase;
@@ -100,19 +100,19 @@ table.nimbus-table thead th {
   background: var(--color-bg);
 }
 
-table.nimbus-table tbody td {
+table.Integrated-table tbody td {
   padding: 16px 20px;
   border-bottom: 1px solid var(--color-border);
   font-size: 0.9rem;
 }
 
-table.nimbus-table tbody tr {
+table.Integrated-table tbody tr {
   transition: background 0.15s ease;
 }
-table.nimbus-table tbody tr:hover {
+table.Integrated-table tbody tr:hover {
   background: var(--color-bg);
 }
-table.nimbus-table tbody tr:last-child td {
+table.Integrated-table tbody tr:last-child td {
   border-bottom: none;
 }
 

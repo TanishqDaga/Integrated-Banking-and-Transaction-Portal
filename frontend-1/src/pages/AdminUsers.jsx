@@ -66,7 +66,7 @@ export default function AdminUsers() {
       ) : (
         <>
           <div className="table-wrap">
-            <table className="nimbus-table">
+            <table className="Integrated-table">
               <thead>
                 <tr>
                   <th>User</th>

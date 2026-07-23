@@ -12,14 +12,14 @@ export function validateEmail(value) {
 }
 
 export function validatePhone(value) {
-  if (!value) return 'Phone number is required.';
+  //if (!value) return 'Phone number is required.';
   const re = /^[0-9]{10}$/;
   return re.test(value.replace(/\D/g, '').slice(-10)) ? '' : 'Enter a valid 10-digit phone number.';
 }
 
 export function validatePassword(value) {
   if (!value) return 'Password is required.';
-  if (value.length < 6) return 'Password must be at least 6 characters.';
+  if (value.length < 4) return 'Password must be at least 6 characters.';
   return '';
 }
 

@@ -50,7 +50,7 @@ export default function Login() {
         <div className="auth-visual-content">
           <div className="auth-logo">
             <span className="navbar-logo-mark">N</span>
-            <span>Nimbus Bank</span>
+            <span>Integrated Bank</span>
           </div>
           <h1>Banking that moves at the speed of your life.</h1>
           <p>Manage accounts, send transfers, and track every transaction — all in one secure place.</p>
@@ -90,7 +90,7 @@ export default function Login() {
                 value={form.username}
                 onChange={handleChange}
                 className={errors.username ? 'has-error' : ''}
-                placeholder="jane.doe"
+                placeholder="demo"
               />
               {errors.username && <p className="field-error">{errors.username}</p>}
             </div>
@@ -105,7 +105,7 @@ export default function Login() {
                 value={form.password}
                 onChange={handleChange}
                 className={errors.password ? 'has-error' : ''}
-                placeholder="••••••••"
+                placeholder="demo"
               />
               {errors.password && <p className="field-error">{errors.password}</p>}
             </div>
