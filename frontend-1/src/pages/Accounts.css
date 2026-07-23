@@ -1,0 +1,12 @@
+.sort-select {
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--color-border);
+  background: var(--color-card);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+.sort-select:focus {
+  outline: none;
+  border-color: var(--color-secondary);
+}

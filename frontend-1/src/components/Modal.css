@@ -1,0 +1,63 @@
+.nimbus-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 18, 32, 0.55);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+}
+
+.nimbus-modal {
+  background: var(--color-card);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.nimbus-modal-sm { max-width: 360px; }
+.nimbus-modal-md { max-width: 480px; }
+.nimbus-modal-lg { max-width: 680px; }
+
+.nimbus-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nimbus-modal-header h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.nimbus-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-text-muted);
+  line-height: 1;
+  padding: 4px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+.nimbus-modal-close:hover {
+  background: var(--color-bg);
+}
+
+.nimbus-modal-body {
+  padding: 24px;
+}
+
+.nimbus-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--color-border);
+}

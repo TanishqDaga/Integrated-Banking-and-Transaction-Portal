@@ -1,0 +1,4 @@
+.nimbus-table td.mono,
+.nimbus-table th.mono {
+  font-family: var(--font-mono);
+}

@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.Bank.BankingApp.Dto.AccountDto;
 import com.Bank.BankingApp.Dto.TransferRequest;
+import com.Bank.BankingApp.entity.Bank;
 import com.Bank.BankingApp.repository.AccountRepository;
+import com.Bank.BankingApp.repository.BankRepository;
 import com.Bank.BankingApp.service.AccountService;
 
 @RestController
@@ -25,11 +27,13 @@ public class AccountController {
 
     private final AccountRepository accountRepository;
 	private AccountService accountService;
+	private BankRepository bankRepository;
 
-	public AccountController(AccountService accountService, AccountRepository accountRepository) {
+	public AccountController(AccountService accountService, AccountRepository accountRepository, BankRepository bankRepository) {
 		super();
 		this.accountService = accountService;
 		this.accountRepository = accountRepository;
+		this.bankRepository = bankRepository;
 	}
 	
 	//Add account REST API
@@ -74,6 +78,11 @@ public class AccountController {
 	@GetMapping("/my-accounts")
 	public List<AccountDto> getMyAccounts(){
 	    return accountService.getAccountsOfLoggedInUser();
+	}
+
+	@GetMapping("/banks")
+	public List<Bank> getBanks(){
+	    return bankRepository.findAll();
 	}
 	
 	//Delete Account REST API

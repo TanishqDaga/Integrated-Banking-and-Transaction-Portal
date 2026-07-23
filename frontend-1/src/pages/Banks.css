@@ -1,0 +1,42 @@
+.bank-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.bank-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+}
+
+.bank-card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.bank-card-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.bank-card-code {
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.bank-card-address {
+  font-size: 0.82rem;
+  margin-top: 4px;
+}

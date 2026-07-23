@@ -174,7 +174,7 @@ public class AccountServiceImpl implements AccountService {
 	@Transactional
 	public void transferFunds(Long sourceAccountId,
 	                          Long targetAccountId,
-	                          double amount) {
+	                          double amount){
 
 	    Authentication auth =
 	            SecurityContextHolder.getContext().getAuthentication();

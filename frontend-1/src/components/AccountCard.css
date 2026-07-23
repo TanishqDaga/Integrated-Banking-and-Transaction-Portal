@@ -1,0 +1,70 @@
+.account-card {
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.account-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+.account-card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.account-card-label {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+
+.account-card-number {
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.account-card-name {
+  font-weight: 700;
+  font-size: 0.98rem;
+}
+
+.account-card-type {
+  font-size: 0.8rem;
+  margin-top: 2px;
+}
+
+.account-card-balance {
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  color: #fff;
+}
+.account-card-balance .account-card-label {
+  color: rgba(255, 255, 255, 0.75);
+}
+.account-card-amount {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-top: 2px;
+}
+
+.account-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.account-delete:hover {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}

@@ -1,0 +1,4 @@
+/* App-level overrides. Most styling lives in per-component and per-page CSS files. */
+#root {
+  min-height: 100vh;
+}
