@@ -41,4 +41,9 @@ public class AuthController {
 
         return "Invalid Password";
     }
+
+    @GetMapping("/ping")
+    public String ping() {
+        return "OK";
+    }
 }
