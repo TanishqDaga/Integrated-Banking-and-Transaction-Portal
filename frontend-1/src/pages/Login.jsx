@@ -55,10 +55,7 @@ export default function Login() {
           <h1>Banking that moves at the speed of your life.</h1>
           <p>Manage accounts, send transfers, and track every transaction — all in one secure place.</p>
           <div className="auth-visual-stats">
-            <div>
-              <p className="mono">2.4M+</p>
-              <span>Active customers</span>
-            </div>
+           
             <div>
               <p className="mono">99.98%</p>
               <span>Uptime</span>
